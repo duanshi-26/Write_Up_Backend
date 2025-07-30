@@ -31,7 +31,7 @@
                 <% files.forEach(function(val){ %>
                      <div class="task bg-zinc-50 shadow rounded p-6 border border-zinc-300 min-w-[220px] max-w-xs flex-1">
                 <h1 class="text-lg font-semibold mb-2 text-zinc-900"><%= val %></h1>
-                <a href="#" class="mt-4 text-zinc-600 underline hover:text-zinc-900 transition-colors duration-200 text-sm">Read more...</a>
+                <a href="/file/<%= val %>" class="mt-4 text-zinc-600 underline hover:text-zinc-900 transition-colors duration-200 text-sm">Read more...</a>
             </div>
               <%  }) %>
             <% } else{ %>

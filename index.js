@@ -28,6 +28,16 @@ app.get('/', (req,res)=>{
     })
 })
 
+app.get('/file/:filename', (req,res)=>{
+    fs.readFile(`./files/${req.params.filename}`, 'utf-8', (err, data)=>{
+        if(err){
+            res.send('File not found');
+        } else {
+            // console.log(data);
+            res.render('show', {filedata: data, filename: req.params.filename});
+        }   
+    } )
+});
 app.post('/create', (req,res)=>{
     // console.log(req.body);
     // ab yeh data ko files mein store karna hai
