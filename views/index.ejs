@@ -7,9 +7,48 @@
     <!-- yeh /public likhna galat hai cause already static files set to public -->
     <!-- <link rel="stylesheet" href="/public/stylesheets/style.css"> -->
      <link rel="stylesheet" href="/stylesheets/style.css">
+
+     <!-- tailwind ko cdn se laye hai -->
+      <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 </head>
 <body>
     <!-- h1 tag mein calculation likhenge-->
-     <h1>Hey Duaaa, you are a grown up <%= 2025-2004%> year old now</h1>
+     <!-- <h1>Hey Duaaa, you are a grown up <%= 2025-2004%> year old now</h1> -->
+
+    <!-- note taking app -->
+     <div class="main min-h-screen bg-zinc-100 flex flex-col items-center justify-center p-8">
+        <div class="form bg-zinc-200 rounded-lg shadow-lg p-8 w-full max-w-md mb-8">
+            <form action="/create" method="POST">
+                <input type="text" placeholder="Title" class="block w-full mb-4 px-4 py-2 border border-zinc-400 rounded focus:outline-none focus:ring-2 focus:ring-zinc-500 bg-zinc-50 text-zinc-800" name="title">
+                <textarea name="details" id="" placeholder="Write your note..." class="block w-full mb-4 px-4 py-2 border border-zinc-400 rounded focus:outline-none focus:ring-2 focus:ring-zinc-500 bg-zinc-50 text-zinc-800" ></textarea>
+                <input type="submit" value="Add Note" class="bg-zinc-700 text-white px-4 py-2 rounded hover:bg-zinc-800 cursor-pointer w-full">
+            </form>
+        </div>
+        <div class="tasks flex flex-wrap gap-4 w-full max-w-3xl justify-center">
+
+            <!-- agar files folder mein files hia toh uska text chalao -->
+             <% if(files.length>0){ %>
+                <% files.forEach(function(val){ %>
+                     <div class="task bg-zinc-50 shadow rounded p-6 border border-zinc-300 min-w-[220px] max-w-xs flex-1">
+                <h1 class="text-lg font-semibold mb-2 text-zinc-900"><%= val %></h1>
+                <a href="#" class="mt-4 text-zinc-600 underline hover:text-zinc-900 transition-colors duration-200 text-sm">Read more...</a>
+            </div>
+              <%  }) %>
+            <% } else{ %>
+                 <h3>No Tasks Yet</h3>
+           <% } %>
+           
+             <!-- <div class="task bg-zinc-50 hidden shadow rounded p-6 border border-zinc-300 min-w-[220px] max-w-xs flex-1">
+                <h1 class="text-lg font-semibold mb-2 text-zinc-900">Your first task</h1>
+                <a href="#" class="mt-4 text-zinc-600 underline hover:text-zinc-900 transition-colors duration-200 text-sm">Read more...</a>
+            </div>
+             <div class="task bg-zinc-50 hidden shadow rounded p-6 border border-zinc-300 min-w-[220px] max-w-xs flex-1">
+                <h1 class="text-lg font-semibold mb-2 text-zinc-900">Your first task</h1>
+                <a href="#" class="mt-4 text-zinc-600 underline hover:text-zinc-900 transition-colors duration-200 text-sm">Read more...</a>
+            </div>
+            -->
+            <!-- Add more .task divs here for additional notes -->
+        </div>
+     </div>
 </body>
 </html>
